@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeHub Catalog</title>
+    <link rel="stylesheet" href="CSS/products.css"> <!-- FIXED -->
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <h2>Filters</h2>
+        <div class="filter-section">
+            <h3>Category</h3>
+            <label><input type="checkbox" checked> All</label>
+            <label><input type="checkbox"> Tops</label>
+            <label><input type="checkbox"> Bottoms</label>
+            <label><input type="checkbox"> Dresses</label>
+            <label><input type="checkbox"> Accessories</label>
+        </div>
+
+        <div class="filter-section">
+            <h3>Price Range</h3>
+            <label><input type="radio" name="price"> Under $50</label>
+            <label><input type="radio" name="price"> $50 - $100</label>
+            <label><input type="radio" name="price"> $100 - $200</label>
+            <label><input type="radio" name="price"> $200+</label>
+        </div>
+
+        <button class="clear-btn">Clear All Filters</button>
+    </aside>
+
+    <main class="content">
+        <header class="grid-header">
+            <span>Showing <b>2</b> products</span>
+            <div class="sort-dropdown">
+                <span>Featured</span>
+            </div>
+        </header>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="Images/Facebook Logo.png" alt="Sweater">
+                    <button class="add-to-cart" onclick="addToCart(1)">Add to Cart</button>
+                </div>
+                <div class="product-info">
+                    <span class="category">Tops</span>
+                    <h4 class="title">Cashmere Blend Sweater</h4>
+                    <span class="price">$129.99</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="Images/Facebook Logo.png" alt="Dress">
+                    <button class="add-to-cart" onclick="addToCart(2)">Add to Cart</button>
+                </div>
+                <div class="product-info">
+                    <span class="category">Dresses</span>
+                    <h4 class="title">Flowing Midi Dress</h4>
+                    <span class="price">$189.99</span>
+                </div>
+            </div>
+
+        </div> <!-- FIXED: closed product grid -->
+    </main>
+</div>
+
+<!-- JS LINK -->
+<script src="js/products.js"></script>
+
+</body>
+</html>

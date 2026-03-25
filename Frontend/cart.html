@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeHub - Cart</title>
+
+    <link rel="stylesheet" href="CSS/cart.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">TradeHub</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- CART CONTENT -->
+<div class="container" style="margin-top: 40px; display: block;">
+    <h1>Your Cart</h1>
+
+    <div id="cart-items"></div>
+
+    <div class="cart-summary">
+        <h2>Total: $<span id="total">0</span></h2>
+        <button onclick="goToCheckout()">Proceed to Checkout</button>
+    </div>
+</div>
+
+<script src="js/cart.js"></script>
+
+</body>
+</html>

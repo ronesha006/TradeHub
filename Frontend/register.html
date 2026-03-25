@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeHub - Create Account</title>
+    <link rel="stylesheet" href="CSS/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="main-wrapper">
+    <section class="info-side">
+        <h1 class="logo">TradeHub</h1>
+        <h2 class="hero-text">Begin Your Journey to Minimalist Living</h2>
+        <p class="description">Join our community of mindful shoppers and sellers. Create your account to access exclusive collections and start building your perfect wardrobe.</p>
+        
+        <div class="info-card">
+            <h3>As a Customer</h3>
+            <p>Good vibes and great buys ahead! Discover curated pieces for your wardrobe.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>As a Seller</h3>
+            <p>Time to turn products into profits! Reach customers who value quality.</p>
+        </div>
+    </section>
+
+    <section class="form-side">
+        <div class="signup-card">
+            <h2>Create Account</h2>
+            <p class="subtitle">Join TradeHub today and start your journey</p>
+
+            <div class="role-toggle">
+                <button class="btn-toggle active">Customer</button>
+                <button class="btn-toggle">Seller</button>
+            </div>
+
+            <form>
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe">
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="you@example.com">
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create a strong password">
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm your password">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I agree to the <span>Terms & Conditions</span> and <span>Privacy Policy</span></label>
+                </div>
+
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+
+            <div class="divider"><span>Or sign up with</span></div>
+
+            <div class="social-login">
+                <button class="social-btn"><img src="Images/Google logo.png" alt=""> Google</button>
+                <button class="social-btn"><img src="Images/Facebook Logo.png" alt=""> Facebook</button>
+            </div>
+
+            <p class="login-link">Already have an account? <a href="login.html">Sign in</a></p>
+        </div>
+    </section>
+</div>
+
+</body>
+
+<script>
+const toggleButtons = document.querySelectorAll('.btn-toggle');
+
+toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        toggleButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    });
+});
+</script>
+
+</html>
