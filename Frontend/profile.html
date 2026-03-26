@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeHub - My Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="logo">TradeHub</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+    <div class="header-actions">
+        <div class="cart-icon" onclick="goToCart()">
+            <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-bag.png" alt="cart">
+            <span id="cart-count" class="cart-count">0</span>
+        </div>
+        <a href="profile.html" class="avatar-icon active">
+            <img src="https://img.icons8.com/material-outlined/24/ffffff/user.png" alt="profile">
+        </a>
+    </div>
+</header>
+
+<div class="profile-container">
+    <div class="profile-sidebar">
+        <div class="profile-avatar">
+            <img src="https://img.icons8.com/material-outlined/80/000000/user.png" alt="avatar">
+        </div>
+        <h2 id="userName">Loading...</h2>
+        <p id="userEmail">Loading...</p>
+        <p id="userPhone">Loading...</p>
+        <p class="user-type"><strong>Account Type:</strong> <span id="userType">Loading...</span></p>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    
+    <div class="profile-content">
+        <div class="orders-section">
+            <h2>My Orders</h2>
+            <div id="orders-list" class="orders-list">
+                <p>Loading orders...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/profile.js"></script>
+
+</body>
+</html>
