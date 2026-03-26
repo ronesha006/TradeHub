@@ -38,24 +38,40 @@
         </main>
 
         <section class="user-cards-section">
-            <h2 class="bottom-question">Who are <br> you today?</h2>
+            <h2 class="bottom-question">Who are you today?</h2>
             
             <div class="cards-container">
                 <div class="glass-card">
                     <h3>Customer</h3>
                     <p>Good vibes and great buys ahead!</p>
-                    <a href="register.html" class="signup-link">Sign up <span>&rarr;</span></a>
+                    <a href="register.html?type=C" class="signup-link">Sign up <span>&rarr;</span></a>
                 </div>
 
                 <div class="glass-card">
                     <h3>Seller</h3>
                     <p>Time to turn products into profits!</p>
-                    <a href="register.html" class="signup-link">Sign up <span>&rarr;</span></a>
+                    <a href="register.html?type=S" class="signup-link">Sign up <span>&rarr;</span></a>
                 </div>
             </div>
+
+            <div class="login-redirect">
+                <p class="login-text"> Already have an account? </p>
+                <button class="glass-login-btn" onclick="goToLogin()"> Login → </button>
+            </div>
+
         </section>
     </div>
 
     <script src="script.js"></script>
+
 </body>
+    <script>
+    function goToLogin() {
+
+        window.location.href =
+        "login.html";
+
+    }
+    </script>
+
 </html>

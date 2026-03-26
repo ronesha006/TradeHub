@@ -9,85 +9,156 @@
 </head>
 <body>
 
-<div class="main-wrapper">
-    <section class="info-side">
-        <h1 class="logo">TradeHub</h1>
-        <h2 class="hero-text">Begin Your Journey to Minimalist Living</h2>
-        <p class="description">Join our community of mindful shoppers and sellers. Create your account to access exclusive collections and start building your perfect wardrobe.</p>
-        
-        <div class="info-card">
-            <h3>As a Customer</h3>
-            <p>Good vibes and great buys ahead! Discover curated pieces for your wardrobe.</p>
-        </div>
-
-        <div class="info-card">
-            <h3>As a Seller</h3>
-            <p>Time to turn products into profits! Reach customers who value quality.</p>
-        </div>
-    </section>
-
-    <section class="form-side">
-        <div class="signup-card">
-            <h2>Create Account</h2>
-            <p class="subtitle">Join TradeHub today and start your journey</p>
-
-            <div class="role-toggle">
-                <button class="btn-toggle active">Customer</button>
-                <button class="btn-toggle">Seller</button>
+    <div class="main-wrapper">
+        <section class="info-side">
+            <h1 class="logo">TradeHub</h1>
+            <h2 class="hero-text">Begin Your Journey to Minimalist Living</h2>
+            <p class="description">Join our community of mindful shoppers and sellers. Create your account to access exclusive collections and start building your perfect wardrobe.</p>
+            
+            <div class="info-card">
+                <h3>As a Customer</h3>
+                <p>Good vibes and great buys ahead! Discover curated pieces for your wardrobe.</p>
             </div>
 
-            <form>
-                <div class="input-group">
-                    <label>Full Name</label>
-                    <input type="text" placeholder="John Doe">
-                </div>
-
-                <div class="input-group">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="you@example.com">
-                </div>
-
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="Create a strong password">
-                </div>
-
-                <div class="input-group">
-                    <label>Confirm Password</label>
-                    <input type="password" placeholder="Confirm your password">
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="terms">
-                    <label for="terms">I agree to the <span>Terms & Conditions</span> and <span>Privacy Policy</span></label>
-                </div>
-
-                <button type="submit" class="btn-primary">Create Account</button>
-            </form>
-
-            <div class="divider"><span>Or sign up with</span></div>
-
-            <div class="social-login">
-                <button class="social-btn"><img src="Images/Google logo.png" alt=""> Google</button>
-                <button class="social-btn"><img src="Images/Facebook Logo.png" alt=""> Facebook</button>
+            <div class="info-card">
+                <h3>As a Seller</h3>
+                <p>Time to turn products into profits! Reach customers who value quality.</p>
             </div>
+        </section>
 
-            <p class="login-link">Already have an account? <a href="login.html">Sign in</a></p>
-        </div>
-    </section>
-</div>
+        <section class="form-side">
+            <div class="signup-card">
+                <h2>Create Account</h2>
+                <p class="subtitle">Join TradeHub today and start your journey</p>
 
+                <div class="role-toggle">
+                    <button class="btn-toggle active">Customer</button>
+                    <button class="btn-toggle">Seller</button>
+                </div>
+
+                <form id="registerForm">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Phone</label>
+                        <input type="text" id="phone" placeholder="9999999999" required>
+                    </div>
+
+                    <div class="input-group" id="businessGroup" style="display:none;">
+                        <label>Business Name</label>
+                        <input type="text" id="businessName" placeholder="Your Business Name">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="Create a strong password" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <span>Terms & Conditions</span> and <span>Privacy Policy</span></label>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Create Account</button>
+                </form>
+
+                <div class="divider"><span>Or sign up with</span></div>
+
+                <div class="social-login">
+                    <button class="social-btn"><img src="Images/Google logo.png" alt=""> Google</button>
+                    <button class="social-btn"><img src="Images/Facebook Logo.png" alt=""> Facebook</button>
+                </div>
+
+                <p class="login-link">Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </section>
+    </div>
+    <script src="js/register.js"></script>
 </body>
-
 <script>
-const toggleButtons = document.querySelectorAll('.btn-toggle');
 
-toggleButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        toggleButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-    });
+let userType = "C";
+
+const toggleButtons =
+document.querySelectorAll('.btn-toggle');
+
+const businessGroup =
+document.getElementById("businessGroup");
+
+
+// Handle Button Clicks
+
+toggleButtons.forEach(
+button => {
+
+button.addEventListener(
+'click',
+() => {
+
+toggleButtons.forEach(
+btn => btn.classList.remove('active')
+);
+
+button.classList.add('active');
+
+if (button.textContent === "Seller") {
+
+userType = "S";
+
+businessGroup.style.display =
+"block";
+
+}
+
+else {
+
+userType = "C";
+
+businessGroup.style.display =
+"none";
+
+}
+
+}
+);
+
 });
-</script>
 
+
+// Handle URL Role Auto-Select
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const type =
+params.get("type");
+
+if (type === "S") {
+
+userType = "S";
+
+toggleButtons[1].classList.add("active");
+toggleButtons[0].classList.remove("active");
+
+businessGroup.style.display =
+"block";
+
+}
+
+</script>
 </html>
