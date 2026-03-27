@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeHub - Seller Dashboard</title>
+    <link rel="stylesheet" href="css/seller_dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">TradeHub</div>
+            <div class="seller-name" id="sellerName">Loading...</div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <button class="nav-item active" onclick="showSection('seller-details')">
+                <img src="https://img.icons8.com/material-outlined/20/ffffff/user.png" alt="profile">
+                <span>Seller Details</span>
+            </button>
+            <button class="nav-item" onclick="showSection('products')">
+                <img src="https://img.icons8.com/material-outlined/20/ffffff/box.png" alt="products">
+                <span>My Products</span>
+            </button>
+            <button class="nav-item" onclick="showSection('orders')">
+                <img src="https://img.icons8.com/material-outlined/20/ffffff/shopping-bag.png" alt="orders">
+                <span>Orders & Returns</span>
+            </button>
+            <button class="nav-item" onclick="showSection('add-product')">
+                <img src="https://img.icons8.com/material-outlined/20/ffffff/plus.png" alt="add">
+                <span>Add Product</span>
+            </button>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="logout()">
+                <img src="https://img.icons8.com/material-outlined/20/ffffff/logout.png" alt="logout">
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Seller Details Section -->
+        <div id="seller-details" class="content-section active">
+            <h2>Seller Profile</h2>
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img src="https://img.icons8.com/material-outlined/80/000000/user.png" alt="avatar">
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="sellerFullName">Loading...</h3>
+                        <p id="sellerEmail">Loading...</p>
+                        <p id="sellerPhone">Loading...</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="detail-row">
+                        <span class="label">Business Name:</span>
+                        <span class="value" id="businessName">Loading...</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">GST Number:</span>
+                        <span class="value" id="gstNo">Loading...</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Seller Rating:</span>
+                        <span class="value" id="sellerRating">Loading...</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Total Products:</span>
+                        <span class="value" id="totalProducts">0</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Orders Fulfilled:</span>
+                        <span class="value" id="totalOrders">0</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Pending Orders:</span>
+                        <span class="value" id="pendingOrders">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products" class="content-section">
+            <div class="section-header">
+                <h2>My Products</h2>
+                <button class="add-btn" onclick="showSection('add-product')">+ Add New Product</button>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <p>Loading products...</p>
+            </div>
+        </div>
+
+        <!-- Orders & Returns Section -->
+        <div id="orders" class="content-section">
+            <h2>Orders & Returns Management</h2>
+            
+            <!-- Tabs for Orders -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('pending-orders-tab')">Pending Orders</button>
+                <button class="tab-btn" onclick="showTab('fulfilled-orders-tab')">Fulfilled Orders</button>
+                <button class="tab-btn" onclick="showTab('returns-tab')">Return Requests</button>
+            </div>
+            
+            <!-- Pending Orders Tab -->
+            <div id="pending-orders-tab" class="tab-content active">
+                <h3>Orders to Process</h3>
+                <div class="orders-list" id="pending-orders-list">
+                    <p>Loading pending orders...</p>
+                </div>
+            </div>
+            
+            <!-- Fulfilled Orders Tab -->
+            <div id="fulfilled-orders-tab" class="tab-content">
+                <h3>Completed Orders</h3>
+                <div class="orders-list" id="fulfilled-orders-list">
+                    <p>Loading fulfilled orders...</p>
+                </div>
+            </div>
+            
+            <!-- Returns Tab -->
+            <div id="returns-tab" class="tab-content">
+                <h3>Return Requests</h3>
+                <div class="returns-list" id="returns-list">
+                    <p>Loading return requests...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Product Section -->
+        <div id="add-product" class="content-section">
+            <h2>Add New Product</h2>
+            <form id="addProductForm" class="product-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Product Name *</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="categoryId" required>
+                            <option value="">Select Category</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Price (₹) *</label>
+                        <input type="number" id="productPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock Quantity *</label>
+                        <input type="number" id="stockQuantity" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Product Image Path</label>
+                    <input type="text" id="productImage" placeholder="e.g., Shirt/linen-shirt.jpg">
+                    <small>Image should be placed in Images/ folder</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Storage Location</label>
+                    <input type="text" id="storageLocation" placeholder="e.g., Warehouse A">
+                </div>
+                
+                <button type="submit" class="submit-btn">Add Product</button>
+            </form>
+        </div>
+    </main>
+</div>
+
+<script src="js/seller_dashboard.js"></script>
+</body>
+</html>

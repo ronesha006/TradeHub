@@ -57,6 +57,11 @@
                         <input type="text" id="businessName" placeholder="Your Business Name">
                     </div>
 
+                    <div class="input-group" id="gstGroup" style="display:none;">
+                        <label>GST Number</label>
+                        <input type="text" id="gstNo" placeholder="GST Number (e.g., 27ABCDE1234F1Z5)">
+                    </div>
+
                     <div class="input-group">
                         <label>Password</label>
                         <input type="password" id="password" placeholder="Create a strong password" required>
@@ -92,72 +97,38 @@
 
 let userType = "C";
 
-const toggleButtons =
-document.querySelectorAll('.btn-toggle');
-
-const businessGroup =
-document.getElementById("businessGroup");
-
+const toggleButtons = document.querySelectorAll('.btn-toggle');
+const businessGroup = document.getElementById("businessGroup");
+const gstGroup = document.getElementById("gstGroup");
 
 // Handle Button Clicks
+toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        toggleButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
 
-toggleButtons.forEach(
-button => {
-
-button.addEventListener(
-'click',
-() => {
-
-toggleButtons.forEach(
-btn => btn.classList.remove('active')
-);
-
-button.classList.add('active');
-
-if (button.textContent === "Seller") {
-
-userType = "S";
-
-businessGroup.style.display =
-"block";
-
-}
-
-else {
-
-userType = "C";
-
-businessGroup.style.display =
-"none";
-
-}
-
-}
-);
-
+        if (button.textContent === "Seller") {
+            userType = "S";
+            businessGroup.style.display = "block";
+            gstGroup.style.display = "block";  // Show GST field for sellers
+        } else {
+            userType = "C";
+            businessGroup.style.display = "none";
+            gstGroup.style.display = "none";   // Hide GST field for customers
+        }
+    });
 });
 
-
 // Handle URL Role Auto-Select
-
-const params =
-new URLSearchParams(
-window.location.search
-);
-
-const type =
-params.get("type");
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type");
 
 if (type === "S") {
-
-userType = "S";
-
-toggleButtons[1].classList.add("active");
-toggleButtons[0].classList.remove("active");
-
-businessGroup.style.display =
-"block";
-
+    userType = "S";
+    toggleButtons[1].classList.add("active");
+    toggleButtons[0].classList.remove("active");
+    businessGroup.style.display = "block";
+    gstGroup.style.display = "block";  // Show GST field when URL has type=S
 }
 
 </script>

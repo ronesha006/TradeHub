@@ -663,3 +663,354 @@ body {
         width: 100%;
     }
 }
+
+/* For product grid images */
+.image-container {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background-color: #f5f5f5;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .image-container img {
+    transform: scale(1.05);
+}
+
+/* For cart items */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.cart-item-image {
+    flex-shrink: 0;
+}
+
+/* For order items */
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.order-item-image {
+    flex-shrink: 0;
+}
+
+/* Modal styles */
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.close-modal {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #999;
+}
+
+.close-modal:hover {
+    color: #f38d16;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.required {
+    color: #f44336;
+}
+
+.form-group select,
+.form-group textarea,
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+    font-size: 12px;
+}
+
+.form-checkbox {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-checkbox input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.form-checkbox label {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.cancel-btn {
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cancel-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #f38d16;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.submit-btn:hover {
+    background-color: #e07c00;
+}
+
+.submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Item selection cards */
+.items-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.select-item-card {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select-item-card:hover {
+    border-color: #f38d16;
+    background-color: #fff5e8;
+    transform: translateX(5px);
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-details strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.item-details p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Return status badges */
+.return-status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.return-status-badge.pending {
+    background-color: #ff9800;
+    color: white;
+}
+
+.return-status-badge.approved {
+    background-color: #4caf50;
+    color: white;
+}
+
+.return-status-badge.rejected {
+    background-color: #f44336;
+    color: white;
+}
+
+.return-status-badge.completed {
+    background-color: #2196f3;
+    color: white;
+}
+
+.return-status-badge.not-eligible {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+.return-info {
+    font-size: 11px;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+/* Disabled card styles */
+.select-item-card.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+}
+
+.select-item-card.disabled:hover {
+    transform: none;
+    border-color: #e0e0e0;
+    background-color: #f5f5f5;
+}
+
+.return-btn-small {
+    margin-top: 8px;
+    padding: 4px 12px;
+    background-color: #f38d16;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.return-btn-small:hover {
+    background-color: #e07c00;
+}
+
+/* Return status badges */
+.return-status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.return-status-badge.requested {
+    background-color: #ff9800;
+    color: white;
+}
+
+.return-status-badge.approved {
+    background-color: #4caf50;
+    color: white;
+}
+
+.return-status-badge.rejected {
+    background-color: #f44336;
+    color: white;
+}
+
+.return-status-badge.received {
+    background-color: #2196f3;
+    color: white;
+}
+
+.return-status-badge.not-eligible {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+.return-item-btn {
+    padding: 4px 12px;
+    background-color: #f38d16;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.return-item-btn:hover {
+    background-color: #e07c00;
+}

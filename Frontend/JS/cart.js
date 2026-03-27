@@ -7,6 +7,7 @@ const totalDisplay = document.getElementById("total");
 // DISPLAY CART ITEMS
 // ------------------------------
 
+// Display cart items
 function displayCart() {
     if (!cartContainer) return;
     
@@ -18,9 +19,20 @@ function displayCart() {
         let quantity = item.quantity;
         total += price * quantity;
 
+        // Use the image path from cart item
+        const imagePath = item.Product_Image ? 
+            `Images/${item.Product_Image}` : 
+            'Images/default-product.jpg';
+
         const cartItem = `
             <div class="cart-item">
-                <div>
+                <div class="cart-item-image">
+                    <img src="${imagePath}" 
+                         alt="${item.Product_Name}"
+                         onerror="this.src='Images/default-product.jpg'"
+                         style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                </div>
+                <div class="cart-item-details">
                     <h3>${item.Product_Name}</h3>
                     <p>₹${price} x ${quantity}</p>
                 </div>

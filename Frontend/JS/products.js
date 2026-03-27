@@ -4,10 +4,39 @@ let categories = []; // Available categories
 let priceRanges = []; // Dynamic price ranges
 
 // Load products and categories from Flask API
+// Load products and categories from Flask API
 async function loadProducts() {
     try {
         const response = await fetch("http://127.0.0.1:5000/products");
         products = await response.json();
+        
+        // DEBUG: Check what's coming from backend
+        console.log("=== PRODUCTS FROM BACKEND ===");
+        console.log("Number of products:", products.length);
+        
+        // Find Linen Shirt specifically
+        const linenShirt = products.find(p => p.Product_Name === 'Linen Shirt');
+        if (linenShirt) {
+            console.log("Linen Shirt data:");
+            console.log("  - Product_ID:", linenShirt.Product_ID);
+            console.log("  - Product_Name:", linenShirt.Product_Name);
+            console.log("  - Product_Image:", linenShirt.Product_Image);
+            console.log("  - Current_Price:", linenShirt.Current_Price);
+            console.log("  - Category_Name:", linenShirt.Category_Name);
+        } else {
+            console.log("Linen Shirt not found in products!");
+        }
+        
+        // Check first 5 products for Product_Image field
+        console.log("First 5 products:");
+        for (let i = 0; i < Math.min(5, products.length); i++) {
+            console.log(`Product ${i+1}:`, {
+                name: products[i].Product_Name,
+                hasImage: products[i].Product_Image ? 'Yes' : 'No',
+                image: products[i].Product_Image
+            });
+        }
+        
         filteredProducts = [...products];
         
         // Extract unique categories
@@ -238,6 +267,7 @@ function updateProductCount() {
 }
 
 // Display products in grid
+// Display products in grid
 function displayProducts() {
     const productGrid = document.getElementById("product-grid");
     
@@ -251,11 +281,24 @@ function displayProducts() {
     productGrid.innerHTML = "";
     
     filteredProducts.forEach(product => {
+        // Use the image path from database
+        let imagePath;
+        
+        if (product.Product_Image) {
+            // Note: Using "Images" with capital I
+            imagePath = `Images/${product.Product_Image}`;
+        } else {
+            imagePath = 'Images/default-product.jpg';
+        }
+        
+        console.log(`Loading image for ${product.Product_Name}: ${imagePath}`); // Debug
+        
         const productCard = `
             <div class="product-card" data-product-id="${product.Product_ID}">
                 <div class="image-container">
-                    <img src="https://via.placeholder.com/300x400?text=${encodeURIComponent(product.Product_Name)}"
-                         alt="${product.Product_Name}">
+                    <img src="${imagePath}"
+                         alt="${product.Product_Name}"
+                         onerror="console.error('Failed to load: ${imagePath}'); this.src='Images/default-product.jpg'">
                     <button class="add-to-cart" onclick="addToCart(${product.Product_ID})">
                         Add to Cart
                     </button>
@@ -293,13 +336,19 @@ function addToCart(productId) {
         existing.quantity += 1;
     } else {
         cart.push({
-            ...product,
+            Product_ID: product.Product_ID,
+            Product_Name: product.Product_Name,
+            Current_Price: product.Current_Price,
+            Product_Image: product.Product_Image,  // Add this line
             quantity: 1
         });
     }
     
     localStorage.setItem("cart", JSON.stringify(cart));
     console.log("Cart now:", cart);
+    
+    // Update cart count badge
+    updateCartCount();
     
     // Show notification
     showNotification(`${product.Product_Name} added to cart!`);
