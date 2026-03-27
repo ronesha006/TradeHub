@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TradeHub - Cart</title>
-
-    <link rel="stylesheet" href="CSS/cart.css">
+    <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
 
@@ -19,6 +18,16 @@
             <li><a href="cart.html">Cart</a></li>
         </ul>
     </nav>
+    <div class="header-actions">
+        <div class="cart-icon" onclick="goToCart()">
+            <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-bag.png" alt="cart">
+            <span id="cart-count" class="cart-count">0</span>
+        </div>
+        <!-- Avatar icon - redirects to profile page -->
+        <a href="profile.html" class="avatar-icon">
+            <img src="https://img.icons8.com/material-outlined/24/ffffff/user.png" alt="profile">
+        </a>
+    </div>
 </header>
 
 <!-- CART CONTENT -->
@@ -28,7 +37,7 @@
     <div id="cart-items"></div>
 
     <div class="cart-summary">
-        <h2>Total: $<span id="total">0</span></h2>
+        <h2>Total: ₹<span id="total">0</span></h2>
         <button onclick="goToCheckout()">Proceed to Checkout</button>
     </div>
 </div>

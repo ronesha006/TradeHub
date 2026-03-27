@@ -4,48 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TradeHub Catalog</title>
-    <link rel="stylesheet" href="CSS/products.css"> <!-- FIXED -->
+    <link rel="stylesheet" href="css/products.css">
 </head>
 <body>
 
 <div class="container">
     <aside class="sidebar">
         <h2>Filters</h2>
+        
+        <!-- Dynamic Category Filter -->
         <div class="filter-section">
             <h3>Category</h3>
-            <label><input type="checkbox" checked> All</label>
-            <label><input type="checkbox"> Tops</label>
-            <label><input type="checkbox"> Bottoms</label>
-            <label><input type="checkbox"> Dresses</label>
-            <label><input type="checkbox"> Accessories</label>
+            <div id="category-filters">
+                <label><input type="checkbox" class="category-filter" value="all" checked> All</label>
+                <!-- Categories will be loaded dynamically -->
+            </div>
         </div>
 
+        <!-- Dynamic Price Range Filter -->
         <div class="filter-section">
             <h3>Price Range</h3>
-            <label><input type="radio" name="price"> Under $50</label>
-            <label><input type="radio" name="price"> $50 - $100</label>
-            <label><input type="radio" name="price"> $100 - $200</label>
-            <label><input type="radio" name="price"> $200+</label>
+            <div id="price-filters">
+                <!-- Price ranges will be loaded dynamically -->
+            </div>
         </div>
 
-        <button class="clear-btn">Clear All Filters</button>
+        <button class="clear-btn" onclick="clearAllFilters()">Clear All Filters</button>
     </aside>
 
     <main class="content">
         <header class="grid-header">
-            <span>Showing <b>2</b> products</span>
-            <div class="sort-dropdown">
-                <span>Featured</span>
+            <div class="header-left">
+                <span>Showing <b id="product-count">0</b> products</span>
+            </div>
+            <div class="header-right">
+                <div class="sort-dropdown">
+                    <select id="sort-by" onchange="sortProducts()">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                    </select>
+                </div>
+                <!-- Cart icon -->
+                <div class="cart-icon" onclick="goToCart()">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/shopping-bag.png" alt="cart">
+                    <span id="cart-count" class="cart-count">0</span>
+                </div>
+                <!-- Avatar icon - redirects to profile page -->
+                <a href="profile.html" class="avatar-icon">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/user.png" alt="profile">
+                </a>
             </div>
         </header>
 
-        <div class="product-grid">
+        <div class="product-grid" id="product-grid">
             <!-- Products load dynamically -->
-        </div> 
+        </div>
     </main>
 </div>
 
-<!-- JS LINK -->
 <script src="js/products.js"></script>
 
 </body>
